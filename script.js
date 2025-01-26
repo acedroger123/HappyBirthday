@@ -32,20 +32,16 @@ text.style.fontFamily = 'Arial, sans-serif';
 overlay.appendChild(text);
 document.body.appendChild(overlay);
 
-// Access the button
-var button = document.getElementById("Button");
-button.style.visibility = "hidden";
-
 // Function to start everything
 function startExperience() {
-  bgMusic.play();
-  overlay.style.display = 'none';
-  draw(); // Start the animation
+    bgMusic.play();
+    overlay.style.display = 'none';
+    draw(); // Start the animation
 }
 
 // Handle click on overlay
 overlay.addEventListener('click', function() {
-  startExperience();
+    startExperience();
 });
 
 // Create and load background image
@@ -79,6 +75,7 @@ function drawText() {
     );
     opacity = opacity + 0.01;
   }
+  //fades out the text by decreasing the opacity
   if (frameNumber >= 300 && frameNumber < 600) {
     context.fillStyle = `rgba(255, 255, 255, ${opacity})`;
     context.fillText(
@@ -89,25 +86,50 @@ function drawText() {
     opacity = opacity - 0.01;
   }
 
+  //needs this if statement to reset the opacity before next statement on canvas
   if (frameNumber == 600) {
     opacity = 0;
   }
   if (frameNumber > 600 && frameNumber < 900) {
     context.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-    context.fillText(
-      "amongst trillions and trillions of stars, over billions of years",
-      canvas.width / 2,
-      canvas.height / 2
-    );
+
+    if (window.innerWidth < 600) {
+      drawTextWithLineBreaks(
+        ["amongst trillions and trillions of stars,", "over billions of years"],
+        canvas.width / 2,
+        canvas.height / 2,
+        fontSize,
+        lineHeight
+      );
+    } else {
+      context.fillText(
+        "amongst trillions and trillions of stars, over billions of years",
+        canvas.width / 2,
+        canvas.height / 2
+      );
+    }
+
     opacity = opacity + 0.01;
   }
   if (frameNumber >= 900 && frameNumber < 1200) {
     context.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-    context.fillText(
-      "amongst trillions and trillions of stars, over billions of years",
-      canvas.width / 2,
-      canvas.height / 2
-    );
+
+    if (window.innerWidth < 600) {
+      drawTextWithLineBreaks(
+        ["amongst trillions and trillions of stars,", "over billions of years"],
+        canvas.width / 2,
+        canvas.height / 2,
+        fontSize,
+        lineHeight
+      );
+    } else {
+      context.fillText(
+        "amongst trillions and trillions of stars, over billions of years",
+        canvas.width / 2,
+        canvas.height / 2
+      );
+    }
+
     opacity = opacity - 0.01;
   }
 
@@ -158,49 +180,148 @@ function drawText() {
   if (frameNumber == 2400) {
     opacity = 0;
   }
-  if (frameNumber > 2400 && frameNumber < 3000) {
+  if (frameNumber > 2400 && frameNumber < 2700) {
     context.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-    context.fillText(
-      "I love you so much , more than all the time and space in the universe can contain",
-      canvas.width / 2,
-      canvas.height / 2
-    );
+
+    if (window.innerWidth < 600) {
+      drawTextWithLineBreaks(
+        [
+          "and yet here I am to get the impossible",
+          "chance to get to know you",
+        ],
+        canvas.width / 2,
+        canvas.height / 2,
+        fontSize,
+        lineHeight
+      );
+    } else {
+      context.fillText(
+        "and yet here I am to get the impossible chance to get to know you",
+        canvas.width / 2,
+        canvas.height / 2
+      );
+    }
+
+    opacity = opacity + 0.01;
+  }
+  if (frameNumber >= 2700 && frameNumber < 3000) {
+    context.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+
+    if (window.innerWidth < 600) {
+      drawTextWithLineBreaks(
+        [
+          "and yet here I am to get the impossible",
+          "chance to get to know you",
+        ],
+        canvas.width / 2,
+        canvas.height / 2,
+        fontSize,
+        lineHeight
+      );
+    } else {
+      context.fillText(
+        "and yet here I am to get the impossible chance to get to know you",
+        canvas.width / 2,
+        canvas.height / 2
+      );
+    }
+
+    opacity = opacity - 0.01;
+  }
+
+  if (frameNumber == 3000) {
+    opacity = 0;
+  }
+  if (frameNumber > 3000 && frameNumber < 99999) {
+    context.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+
+    if (window.innerWidth < 600) {
+      drawTextWithLineBreaks(
+        [
+          "I love you so much , more than",
+          "all the time and space in the universe can contain",
+        ],
+        canvas.width / 2,
+        canvas.height / 2,
+        fontSize,
+        lineHeight
+      );
+    } else {
+      context.fillText(
+        "I love you so much , more than all the time and space in the universe can contain",
+        canvas.width / 2,
+        canvas.height / 2
+      );
+    }
+
     opacity = opacity + 0.01;
   }
 
-  if (opacity >= 1 && !button.classList.contains("visible")) {
-    setTimeout(() => {
-      button.style.visibility = "visible";
-      button.classList.add("visible"); // Smooth fade-in using CSS
-    }, 10000); // 10-second delay
+  if (frameNumber >= 3300 && frameNumber < 99999) {
+    context.fillStyle = `rgba(255, 255, 255, ${secondOpacity})`;
+
+    if (window.innerWidth < 600) {
+      drawTextWithLineBreaks(
+        [
+          "and I can't wait to spend all the time in",
+          "the world to share that love with you!",
+        ],
+        canvas.width / 2,
+        canvas.height / 2 + 70,
+        fontSize,
+        lineHeight
+      );
+    } else {
+      context.fillText(
+        "and I can't wait to spend all the time in the world to share that love with you!",
+        canvas.width / 2,
+        canvas.height / 2 + 50
+      );
+    }
+
+    secondOpacity = secondOpacity + 0.01;
+  }
+
+  if (frameNumber >= 3600 && frameNumber < 99999) {
+    context.fillStyle = `rgba(255, 255, 255, ${thirdOpacity})`;
+    context.fillText(
+      "Happy Birthday to my Bestfriend in Arms, Sister who cares, Mother who loves, and Partner in Crime! I Love You!!",
+      canvas.width / 2,
+      canvas.height / 2 + 120
+    );
+    thirdOpacity = thirdOpacity + 0.01;
   }
 }
 
 // Draw background function
 function drawBackground() {
-  context.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
+    context.drawImage(bgImage, 0, 0, canvas.width, canvas.height);
 }
 
 function draw() {
-  if (bgImage.complete) {
-    drawBackground();
-  } else {
-    context.fillStyle = 'black';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-  }
-  drawText();
-  frameNumber++;
-  requestAnimationFrame(draw);
+    if (bgImage.complete) {
+        drawBackground();
+    } else {
+        context.fillStyle = 'black';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    drawText();
+    frameNumber++;
+    requestAnimationFrame(draw);
 }
 
-// Handle resize
+// Modified to wait for click instead of autoplaying
+bgImage.onload = function() {
+};
+
 window.addEventListener("resize", function () {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  if (bgImage.complete) {
-    drawBackground();
-  } else {
-    context.fillStyle = 'black';
-    context.fillRect(0, 0, canvas.width, canvas.height);
-  }
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    if (bgImage.complete) {
+        drawBackground();
+    } else {
+        context.fillStyle = 'black';
+        context.fillRect(0, 0, canvas.width, canvas.height);
+    }
+    
 });
