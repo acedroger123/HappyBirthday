@@ -284,13 +284,30 @@ function drawText() {
 
   if (frameNumber >= 3600 && frameNumber < 99999) {
     context.fillStyle = `rgba(255, 255, 255, ${thirdOpacity})`;
-    context.fillText(
-      "Happy Birthday to my Bestfriend in Arms, Sister who cares, Mother who loves, and Partner in Crime! I Love You!!",
-      canvas.width / 2,
-      canvas.height / 2 + 120
-    );
-    thirdOpacity = thirdOpacity + 0.01;
+  
+    if (window.innerWidth < 600) {
+      drawTextWithLineBreaks(
+        [
+          "Happy Birthday to my Bestfriend in Arms,",
+          "Sister who cares, Mother who loves,",
+          "and Partner in Crime! I Love You!!"
+        ],
+        canvas.width / 2,
+        canvas.height / 2 + 120,
+        fontSize,
+        lineHeight
+      );
+    } else {
+      context.fillText(
+        "Happy Birthday to my Bestfriend in Arms, Sister who cares, Mother who loves, and Partner in Crime! I Love You!!",
+        canvas.width / 2,
+        canvas.height / 2 + 120
+      );
+    }
+  
+    thirdOpacity = Math.min(thirdOpacity + 0.01, 1); // Ensure opacity doesn't exceed 1
   }
+  
 }
 
 // Draw background function
