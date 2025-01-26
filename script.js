@@ -290,7 +290,7 @@ function drawText() {
         [
           "Happy Birthday to my Bestfriend in Arms,",
           "Sister who cares, Mother who loves,",
-          "and Partner in Crime! I Love You!!"
+          "and Partner in Crime!  I Love You ❤️!!"
         ],
         canvas.width / 2,
         canvas.height / 2 + 120,
@@ -299,14 +299,15 @@ function drawText() {
       );
     } else {
       context.fillText(
-        "Happy Birthday to my Bestfriend in Arms, Sister who cares, Mother who loves, and Partner in Crime! I Love You!!",
+        "Happy Birthday to my Bestfriend in Arms, Sister who cares, Mother who loves, and Partner in Crime!  I Love You ❤️!!",
         canvas.width / 2,
         canvas.height / 2 + 120
       );
     }
   
-    thirdOpacity = Math.min(thirdOpacity + 0.01, 1); // Ensure opacity doesn't exceed 1
+    thirdOpacity = thirdOpacity + 0.01;
   }
+  
   
 }
 
